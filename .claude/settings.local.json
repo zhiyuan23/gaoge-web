@@ -1,0 +1,36 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scripts/start-server.sh:*)",
+      "Bash(cat /Users/snow/Documents/Gaoge/gaoge-web/.superpowers/brainstorm/*/server-info)",
+      "Bash(/Users/snow/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.7/skills/brainstorming/scripts/start-server.sh:*)",
+      "Bash(npm run:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(curl -s http://localhost:5173)",
+      "Bash(curl -s http://localhost:5174/src/App.vue)",
+      "Bash(curl -s http://localhost:5174)",
+      "Bash(curl -s http://localhost:5174/src/main.js)",
+      "Bash(git ls-tree:*)",
+      "Bash(curl -s http://localhost:5174/teams)",
+      "Bash(curl -s \"http://localhost:5174/src/views/TeamsPage.vue?t=123\")",
+      "Bash(curl -s \"http://localhost:5174/src/views/TeamsPage.vue\")",
+      "Bash(curl -s http://localhost:5174/src/views/TeamsPage.vue)",
+      "Bash(npm install:*)",
+      "Bash(pnpm approve-builds:*)",
+      "Bash(npm_config_build_from_source=true pnpm rebuild sharp)",
+      "WebFetch(domain:vert.sh)",
+      "Bash(curl -I \"https://pic1.imgdb.cn/item/69da02eec55d9aecca81178a.jpg\")",
+      "Bash(curl -IL \"https://pic1.imgdb.cn/item/69da02eec55d9aecca81178a.jpg\")",
+      "Bash(curl -L -o public/hero/hero01.jpg \"https://pic1.imgdb.cn/item/69da02eec55d9aecca81178a.jpg\")",
+      "Bash(curl -L -o public/hero/hero02.jpg \"https://pic1.imgdb.cn/item/69da02eec55d9aecca811789.jpg\")",
+      "Bash(curl -L -o public/hero/hero03.jpg \"https://pic1.imgdb.cn/item/69da02eec55d9aecca811786.jpg\")",
+      "Bash(curl -L -o public/hero/hero04.jpg \"https://pic1.imgdb.cn/item/69da02edc55d9aecca811784.jpg\")",
+      "Bash(curl -L -o public/hero/hero05.jpg \"https://pic1.imgdb.cn/item/69da02ecc55d9aecca811782.jpg\")",
+      "Bash(wait)",
+      "Bash(mv src/assets/basketball/moment/temp/*.jpg src/assets/basketball/moment/)",
+      "Bash(mv src/assets/basketball/group/temp/*.jpg src/assets/basketball/group/)",
+      "Bash(mv src/assets/football/moment/temp/*.jpg src/assets/football/moment/)",
+      "Bash(mv src/assets/football/group/temp/*.jpg src/assets/football/group/)"
+    ]
+  }
+}

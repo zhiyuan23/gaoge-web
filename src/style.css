@@ -1,120 +1,324 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;700;900&family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;700&display=swap');
 
 :root {
-  /* 主色 */
-  --primary-blue: #0066FF;
-  --primary-dark: #003399;
-  --primary-light: #4D94FF;
-
-  /* 背景色 */
-  --bg-white: #FFFFFF;
-  --bg-light: #F5F8FF;
-  --bg-cream: #F0F4FF;
-
-  /* 强调色 */
-  --accent-gold: #FFD700;
-
-  /* 文字色 */
-  --text-primary: #1A1A1A;
-  --text-secondary: #666666;
-  --text-light: #999999;
-
-  /* 阴影 */
-  --shadow-card: 0 4px 20px rgba(0, 102, 255, 0.1);
-  --shadow-hover: 0 8px 30px rgba(0, 102, 255, 0.2);
-
-  /* 圆角 */
-  --radius-sm: 8px;
-  --radius-md: 12px;
-  --radius-lg: 20px;
-
-  /* 过渡 */
-  --transition-fast: 0.2s ease;
-  --transition-normal: 0.3s ease;
+  --bg-page: #090a0d;
+  --bg-overlay: rgba(6, 8, 12, 0.48);
+  --bg-overlay-strong: rgba(6, 8, 12, 0.74);
+  --text-primary: #f3f1ed;
+  --text-secondary: rgba(243, 241, 237, 0.74);
+  --text-muted: rgba(243, 241, 237, 0.46);
+  --line-soft: rgba(243, 241, 237, 0.18);
+  --content-width: min(1120px, calc(100vw - 72px));
 }
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
   scroll-behavior: smooth;
+  scroll-snap-type: y mandatory;
 }
 
 body {
-  font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-white);
+  margin: 0;
+  min-width: 320px;
+  background: var(--bg-page);
   color: var(--text-primary);
-  line-height: 1.6;
-  overflow-x: hidden;
-}
-
-h1, h2, h3, h4 {
-  font-weight: 700;
-  line-height: 1.2;
+  font-family: 'Noto Sans SC', sans-serif;
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+  text-decoration: none;
 }
 
-button {
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
+#app {
+  min-height: 100vh;
 }
 
-.container {
-  max-width: 1200px;
+.page-shell {
+  position: relative;
+}
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  width: var(--content-width);
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 28px 0;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* 滚动动画类 */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+.site-brand {
+  font-size: 14px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
 }
 
-.fade-in-up.visible {
-  opacity: 1;
-  transform: translateY(0);
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: flex-end;
 }
 
-/* 按钮样式 */
-.btn {
+.site-nav-link {
+  position: relative;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  transition: color 180ms ease;
+}
+
+.site-nav-link.is-current,
+.site-nav-link:hover {
+  color: var(--text-primary);
+}
+
+.fullpage-stack {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+.fullpage-stack .swiper-wrapper {
+  height: 100%;
+}
+
+.fullpage-stack .swiper-slide {
+  height: 100%;
+}
+
+.fullpage-section {
+  position: relative;
+  min-height: 100vh;
+  overflow: clip;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  background-image: var(--section-image);
+  background-position: center;
+  background-size: cover;
+}
+
+.fullpage-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(8, 9, 13, 0.2) 0%, rgba(8, 9, 13, 0.5) 48%, rgba(8, 9, 13, 0.82) 100%),
+    linear-gradient(115deg, rgba(255, 255, 255, 0.04), transparent 42%);
+  transform: scale(1.03);
+}
+
+.section-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--bg-overlay-strong) 0%, rgba(6, 8, 12, 0.28) 52%, rgba(6, 8, 12, 0.58) 100%);
+}
+
+.section-copy {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  align-content: end;
+  gap: 18px;
+  width: var(--content-width);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 136px 0 72px;
+}
+
+.section-kicker,
+.section-index {
+  margin: 0;
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.section-title {
+  max-width: 10ch;
+  margin: 0;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+}
+
+.section-description {
+  max-width: 34rem;
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.9;
+  color: var(--text-secondary);
+}
+
+/* 内容位置 - contentPosition（仅 PC 端生效） */
+@media (min-width: 901px) {
+  .fullpage-section.position-top-left .section-copy {
+    align-content: start;
+    justify-items: start;
+  }
+
+  .fullpage-section.position-top-right .section-copy {
+    align-content: start;
+    justify-items: end;
+  }
+
+  .fullpage-section.position-top-center .section-copy {
+    align-content: start;
+  }
+
+  .fullpage-section.position-bottom-left .section-copy {
+    align-content: end;
+    justify-items: start;
+  }
+
+  .fullpage-section.position-bottom-right .section-copy {
+    align-content: end;
+    justify-items: end;
+  }
+
+  .fullpage-section.position-bottom-center .section-copy {
+    align-content: end;
+  }
+
+  .fullpage-section.position-left-center .section-copy {
+    align-content: center;
+    justify-items: start;
+  }
+
+  .fullpage-section.position-right-center .section-copy {
+    align-content: center;
+    justify-items: end;
+  }
+}
+
+/* 移动端图片偏移 - mobileImageOffset */
+@media (max-width: 900px) {
+  .fullpage-section {
+    /* 默认居中，mobileImageOffset 为 0 时也是居中 */
+    background-position: calc(50% + var(--mobile-image-offset, 0%)) center;
+  }
+}
+
+.section-finale .section-copy {
+  grid-template-columns: auto 1fr;
+  align-content: center;
+  align-items: center;
+  column-gap: clamp(24px, 5vw, 72px);
+}
+
+.section-finale .section-kicker,
+.section-finale .section-index,
+.section-finale .section-description,
+.section-finale .section-cta {
+  grid-column: 2;
+}
+
+.section-title-vertical {
+  max-width: none;
+  grid-row: 1 / span 4;
+  grid-column: 1;
+  align-self: center;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  line-height: 1.1;
+  max-height: 78vh;
+}
+
+.section-cta {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  padding: 12px 28px;
-  border-radius: var(--radius-md);
-  font-weight: 700;
-  font-size: 14px;
-  transition: all var(--transition-normal);
+  width: fit-content;
+  margin-top: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
 }
 
-.btn-primary {
-  background: var(--primary-blue);
-  color: white;
+.fullpage-section.is-active .section-copy {
+  animation: section-rise 420ms ease-out both;
 }
 
-.btn-primary:hover {
-  background: var(--primary-dark);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+@keyframes section-rise {
+  from {
+    opacity: 0.45;
+    transform: translate3d(0, 24px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
-.btn-outline {
-  background: transparent;
-  border: 2px solid var(--primary-blue);
-  color: var(--primary-blue);
-}
+@media (max-width: 900px) {
+  :root {
+    --content-width: min(100vw - 40px, 100%);
+  }
 
-.btn-outline:hover {
-  background: var(--primary-blue);
-  color: white;
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .site-header {
+    padding: 20px 0;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .section-copy {
+    align-content: end;
+    justify-items: start;
+    gap: 16px;
+    padding: 96px 0 56px;
+  }
+
+  .section-title {
+    max-width: 12ch;
+    font-size: clamp(2.3rem, 11vw, 4rem);
+    line-height: 1.02;
+  }
+
+  .section-description {
+    max-width: 28rem;
+    font-size: 14px;
+    line-height: 1.9;
+  }
+
+  .section-finale .section-copy {
+    grid-template-columns: 1fr;
+    align-content: center;
+    column-gap: 0;
+  }
+
+  .section-finale .section-kicker,
+  .section-finale .section-index,
+  .section-finale .section-description,
+  .section-finale .section-cta {
+    grid-column: 1;
+  }
+
+  .section-title-vertical {
+    grid-row: auto;
+    grid-column: 1;
+    writing-mode: horizontal-tb;
+    max-height: none;
+  }
 }
